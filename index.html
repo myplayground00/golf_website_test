@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metro — Sport Clothes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0d0c22;
+      --white:   #ffffff;
+      --gray:    #f5f5f5;
+      --border:  #e5e5e5;
+      --muted:   #767676;
+      --accent:  #E63946;
+      --nav-h:   72px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── Announcement ── */
+    .announce {
+      background: var(--black);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+    .announce a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+    }
+    .nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links .sale a { color: var(--accent); }
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-icons button,
+    .nav-icons a {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      position: relative;
+    }
+    .cart-badge {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h) - 41px);
+    }
+    .hero-content {
+      padding: 80px 48px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(80px, 9vw, 130px);
+      font-weight: 900;
+      line-height: 0.86;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      max-width: 380px;
+      margin-bottom: 48px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 36px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #c82030; }
+    .btn-ghost {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
+      transition: color 0.15s;
+    }
+    .btn-ghost:hover { color: #fff; }
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      background: var(--accent);
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .badge-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .badge-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2px;
+      opacity: 0.85;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Promo strip ── */
+    .promo-strip {
+      background: var(--accent);
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      padding: 15px 48px;
+    }
+    .promo-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Category bar ── */
+    .cat-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-bar a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 22px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-right: 1px solid var(--border);
+      transition: background 0.15s, color 0.15s;
+    }
+    .cat-bar a:last-child { border-right: none; }
+    .cat-bar a:hover { background: var(--black); color: #fff; }
+    .cat-bar a:hover .cat-count { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); }
+    .cat-count {
+      background: var(--gray);
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    /* ── Container / Section ── */
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .section { padding: 80px 0; }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .view-all {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--black);
+      padding-bottom: 2px;
+      transition: opacity 0.15s;
+    }
+    .view-all:hover { opacity: 0.5; }
+
+    /* ── Product grid ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .product-card { cursor: pointer; }
+    .product-image {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--gray);
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .product-card:hover .product-image img { transform: scale(1.06); }
+    .p-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+    }
+    .p-tag-dark { background: var(--black); }
+    .p-wish {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      background: #fff;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .product-card:hover .p-wish { opacity: 1; }
+    .p-cat {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .p-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .p-price {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+    .price { font-size: 16px; font-weight: 700; color: var(--black); }
+    .price-was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+    .price-off { font-size: 13px; font-weight: 600; color: var(--accent); }
+
+    /* ── Feature category grid ── */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    .feat-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .feat-item.wide { grid-column: span 2; }
+    .feat-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .feat-item:hover img { transform: scale(1.04); }
+    .feat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,12,34,0.82) 0%, rgba(13,12,34,0.1) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+    .feat-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .feat-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1;
+    }
+    .feat-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 10px;
+    }
+
+    /* ── Editorial Banner ── */
+    .editorial {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 540px;
+    }
+    .editorial-content {
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .editorial-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(60px, 7.5vw, 108px);
+      font-weight: 900;
+      line-height: 0.87;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .editorial-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      max-width: 360px;
+      margin-bottom: 40px;
+    }
+    .editorial-image { position: relative; overflow: hidden; }
+    .editorial-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── Reviews ── */
+    .reviews-section { background: var(--gray); padding: 80px 0; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card { background: #fff; padding: 28px; }
+    .stars { color: #f5a623; font-size: 15px; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text { font-size: 15px; line-height: 1.65; color: var(--black); margin-bottom: 20px; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .r-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .r-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .r-name { font-size: 14px; font-weight: 600; color: var(--black); }
+    .r-label { font-size: 12px; color: var(--muted); }
+
+    /* ── Newsletter ── */
+    .newsletter { background: var(--black); padding: 88px 0; }
+    .newsletter-inner { text-align: center; max-width: 540px; margin: 0 auto; }
+    .nl-form {
+      display: flex;
+      gap: 0;
+      margin-top: 40px;
+    }
+    .nl-input {
+      flex: 1;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-family: inherit;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-right: none;
+      color: #fff;
+      outline: none;
+    }
+    .nl-input::placeholder { color: rgba(255,255,255,0.3); }
+    .nl-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nl-btn:hover { background: #c82030; }
+
+    /* ── Footer ── */
+    footer { background: var(--black); padding: 80px 0 40px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .footer-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.38);
+      max-width: 280px;
+      margin-bottom: 28px;
+    }
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.28); }
+    .payment-badges { display: flex; gap: 8px; align-items: center; }
+    .pbadge {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 4px 9px;
+      border-radius: 4px;
+    }
+
+    /* ── Size strip ── */
+    .size-strip { background: var(--gray); }
+    .size-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .size-inner h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .size-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+    .size-tag {
+      padding: 8px 18px;
+      border: 1.5px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--black);
+      cursor: pointer;
+      background: #fff;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .size-tag:hover, .size-tag.active { background: var(--black); color: #fff; border-color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement -->
+  <div class="announce">
+    Free shipping on orders over $75 &nbsp;&middot;&nbsp; New SS&rsquo;24 collection just dropped &mdash;
+    <a href="#">Shop Now &rarr;</a>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">Metro</a>
+      <ul class="nav-links">
+        <li><a href="#">New</a></li>
+        <li><a href="#">Tops</a></li>
+        <li><a href="#">Pants</a></li>
+        <li><a href="#">Shoes</a></li>
+        <li><a href="#">Bags</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li class="sale"><a href="#">Sale</a></li>
+      </ul>
+      <div class="nav-icons">
+        <button aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <a href="#" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">3</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">SS &rsquo;24 Collection</p>
+      <h1 class="hero-title">Sport<br>Clothes</h1>
+      <p class="hero-sub">High-performance athletic wear engineered for movement, designed for life. Elevate your game.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          Shop Collection
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="btn-ghost">
+          Lookbook 2024
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">200+</div>
+          <div class="stat-lbl">New items this season</div>
+        </div>
+        <div>
+          <div class="stat-num">50k+</div>
+          <div class="stat-lbl">Happy athletes</div>
+        </div>
+        <div>
+          <div class="stat-num">4.9★</div>
+          <div class="stat-lbl">Average rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://placehold.co/720x820/1a1a2e/555577?text=Sport+Model" alt="Sport Clothes Hero" />
+      <div class="hero-badge">
+        <span class="badge-num">NEW</span>
+        <span class="badge-lbl">In Stock</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo strip -->
+  <div class="promo-strip">
+    <div class="promo-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Free Shipping $75+
+    </div>
+    <div class="promo-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Free Returns
+    </div>
+    <div class="promo-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Secure Checkout
+    </div>
+    <div class="promo-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Buy Now, Pay Later
+    </div>
+  </div>
+
+  <!-- Category bar -->
+  <div class="cat-bar">
+    <a href="#">Tops <span class="cat-count">142</span></a>
+    <a href="#">Pants <span class="cat-count">98</span></a>
+    <a href="#">Shoes <span class="cat-count">76</span></a>
+    <a href="#">Bags <span class="cat-count">54</span></a>
+    <a href="#">Accessories <span class="cat-count">201</span></a>
+  </div>
+
+  <!-- New Arrivals -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">New Arrivals</h2>
+        <a href="#" class="view-all">View All</a>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/e2e2e6/2a2a3a?text=Jacket" alt="Performance Jacket" />
+            <span class="p-tag">New</span>
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Outerwear</p>
+          <p class="p-name">Metro Performance Jacket</p>
+          <div class="p-price"><span class="price">$189</span></div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/2a2a3a/ddddee?text=Shorts" alt="Training Shorts" />
+            <span class="p-tag">New</span>
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Bottoms</p>
+          <p class="p-name">Elite Training Shorts</p>
+          <div class="p-price"><span class="price">$75</span></div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/f0f0f0/333344?text=Tee" alt="Compression Tee" />
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Tops</p>
+          <p class="p-name">Pro Compression Tee</p>
+          <div class="p-price">
+            <span class="price">$59</span>
+            <span class="price-was">$79</span>
+            <span class="price-off">−25%</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/f5f0e8/3a3020?text=Runners" alt="Metro Runner X1" />
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Footwear</p>
+          <p class="p-name">Metro Runner X1</p>
+          <div class="p-price"><span class="price">$149</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Category (feature grid) -->
+  <section style="padding-bottom: 80px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <a href="#" class="view-all">All Categories</a>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-item wide">
+          <img src="https://placehold.co/860x480/0d0c22/445566?text=Outerwear+Collection" alt="Outerwear" />
+          <div class="feat-overlay">
+            <p class="feat-tag">Featured</p>
+            <p class="feat-name">Outerwear</p>
+            <span class="feat-arrow">Shop now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <img src="https://placehold.co/430x480/222235/556677?text=Footwear" alt="Shoes" />
+          <div class="feat-overlay">
+            <p class="feat-tag">New Drops</p>
+            <p class="feat-name">Footwear</p>
+            <span class="feat-arrow">Shop now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <img src="https://placehold.co/430x480/3a3a4a/667788?text=Tops" alt="Tops" />
+          <div class="feat-overlay">
+            <p class="feat-tag">Essential</p>
+            <p class="feat-name">Active Tops</p>
+            <span class="feat-arrow">Shop now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+        <div class="feat-item wide">
+          <img src="https://placehold.co/860x480/1a1a2e/334455?text=Bags+%26+Accessories" alt="Bags" />
+          <div class="feat-overlay">
+            <p class="feat-tag">Carry Everything</p>
+            <p class="feat-name">Bags &amp; Accessories</p>
+            <span class="feat-arrow">Shop now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Banner -->
+  <section class="editorial">
+    <div class="editorial-content">
+      <p class="eyebrow">Limited Edition</p>
+      <h2 class="editorial-title">Move<br>Faster.<br>Look<br>Better.</h2>
+      <p class="editorial-desc">Our most advanced collection yet. Engineered fabrics that move with you, not against you.</p>
+      <a href="#" class="btn-primary" style="align-self: flex-start;">
+        Explore the Edit
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="editorial-image">
+      <img src="https://placehold.co/720x540/111122/334455?text=Editorial+Campaign" alt="Editorial" />
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Best Sellers</h2>
+        <a href="#" class="view-all">Shop All</a>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/1a1a2e/aabbcc?text=Hoodie" alt="Sport Hoodie" />
+            <span class="p-tag p-tag-dark">Best Seller</span>
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Tops</p>
+          <p class="p-name">Metro Sport Hoodie</p>
+          <div class="p-price"><span class="price">$129</span></div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/e63946/fff0f0?text=Leggings" alt="Leggings" />
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Bottoms</p>
+          <p class="p-name">High-Waist Performance Leggings</p>
+          <div class="p-price"><span class="price">$95</span></div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/eeeeee/333344?text=Cap" alt="Metro Cap" />
+            <span class="p-tag p-tag-dark">−30%</span>
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Accessories</p>
+          <p class="p-name">Metro Logo Cap</p>
+          <div class="p-price">
+            <span class="price">$35</span>
+            <span class="price-was">$50</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/400x533/3d3d4e/aaaacc?text=Duffel" alt="Training Bag" />
+            <button class="p-wish" aria-label="Wishlist">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d0c22" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <p class="p-cat">Bags</p>
+          <p class="p-name">Metro Training Duffel</p>
+          <div class="p-price"><span class="price">$115</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Size strip -->
+  <div class="size-strip">
+    <div class="size-inner">
+      <h3>Find Your Size</h3>
+      <div class="size-tags">
+        <span class="size-tag active">XS</span>
+        <span class="size-tag">S</span>
+        <span class="size-tag">M</span>
+        <span class="size-tag">L</span>
+        <span class="size-tag">XL</span>
+        <span class="size-tag">XXL</span>
+      </div>
+      <a href="#" style="margin-left:auto; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--black); text-decoration:none; border-bottom:1.5px solid var(--black); padding-bottom:2px;">Size Guide</a>
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What They Say</h2>
+        <div style="display:flex; align-items:baseline; gap:8px;">
+          <span style="font-family:'Barlow Condensed',sans-serif; font-size:40px; font-weight:900; line-height:1;">4.9</span>
+          <span style="font-size:13px; color:var(--muted);">from 2,400+ reviews</span>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"The performance jacket is incredible. Lightweight but incredibly warm. Wore it through an entire winter of morning runs &mdash; zero complaints."</p>
+          <div class="reviewer">
+            <div class="r-avatar"><img src="https://placehold.co/40x40/2a2a3a/ffffff?text=JD" alt="JD" /></div>
+            <div><p class="r-name">James D.</p><p class="r-label">Verified Buyer</p></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Finally found leggings that don&rsquo;t lose their shape after washing. These feel premium and look even better. I&rsquo;ve already ordered three pairs."</p>
+          <div class="reviewer">
+            <div class="r-avatar"><img src="https://placehold.co/40x40/e63946/ffffff?text=SK" alt="SK" /></div>
+            <div><p class="r-name">Sarah K.</p><p class="r-label">Verified Buyer</p></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Metro Runner X1s changed my entire training. Best running shoes I&rsquo;ve worn in years, and I&rsquo;ve tried every brand on the market."</p>
+          <div class="reviewer">
+            <div class="r-avatar"><img src="https://placehold.co/40x40/1a1a2e/aabbcc?text=MR" alt="MR" /></div>
+            <div><p class="r-name">Marcus R.</p><p class="r-label">Verified Buyer</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <p class="eyebrow">Stay In The Loop</p>
+        <h2 style="font-family:'Barlow Condensed',sans-serif; font-size:56px; font-weight:900; text-transform:uppercase; color:#fff; line-height:1; margin-bottom:16px;">New Drops.<br>No Spam.</h2>
+        <p style="font-size:15px; color:rgba(255,255,255,0.45); line-height:1.7;">Join 50,000+ athletes. Early access to collections, exclusive deals, and training tips.</p>
+        <form class="nl-form" onsubmit="return false;">
+          <input class="nl-input" type="email" placeholder="Your email address" />
+          <button class="nl-btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="footer-logo">Metro</a>
+          <p class="footer-desc">Premium athletic wear built for performance, designed for style. For people who push limits.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter/X">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Tops</a></li>
+            <li><a href="#">Pants</a></li>
+            <li><a href="#">Shoes</a></li>
+            <li><a href="#">Bags</a></li>
+            <li><a href="#">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Metro</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 Metro Sport. All rights reserved.</p>
+        <div class="payment-badges">
+          <span class="pbadge">VISA</span>
+          <span class="pbadge">MC</span>
+          <span class="pbadge">AMEX</span>
+          <span class="pbadge">PAYPAL</span>
+          <span class="pbadge">KLARNA</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
